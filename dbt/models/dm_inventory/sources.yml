@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: google_sheets_wbr
+    database: tm_fivetran  
+    schema: google_sheets_wbr  
+    tables:
+      - name: demand_metrics
+
