@@ -32,9 +32,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   tm_core:
+    +database: TM_IGLOO
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
       +schema: example
-    dm_inventory:
-      +schema: dm_inventory
+    base:
+      +database: dev_base
+      gsheet_wbr:
+        +schema: gsheet_wbr
