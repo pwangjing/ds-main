@@ -38,6 +38,6 @@ models:
       +materialized: view
       +schema: example
     base:
-      +database: dev_base
+      +database: BASE
       gsheet_wbr:
         +schema: gsheet_wbr
