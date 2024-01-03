@@ -22,4 +22,5 @@ jobs:
           dbt_command: "dbt run --profiles-dir ." # the actual dbt command!
           dbt_project_folder: "dbt"
         env:
-          DBT_BIGQUERY_TOKEN: $ # credentials to access this service
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_SA_PSWD }} # credentials to access this service
+         
