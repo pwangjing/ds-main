@@ -1,4 +1,5 @@
-name: Schedule dbt
+name: Run dbt
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
   push:  # 1. run when new code is pushed
