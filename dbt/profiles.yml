@@ -8,7 +8,7 @@ tm_core:
       threads: 2
       type: snowflake
       user: DEV_GITHUB_ACTION_SA
-      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}" 
+      password: "{{ env_var('SNOWFLAKE_SA_PSWD') }}" 
       warehouse: snowball
   
   target: dev
