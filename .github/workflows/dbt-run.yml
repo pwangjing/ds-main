@@ -2,9 +2,9 @@ name: Run dbt
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
-  push:  # 1. run when new code is pushed
-  schedule: # 2. also run once every day at 8am
-   - cron:  '0 8 * * *'
+  # push:  # 1. run when new code is pushed
+  # schedule: # 2. also run once every day at 8am
+  #  - cron:  '0 8 * * *'
   workflow_dispatch:
 
 jobs:
