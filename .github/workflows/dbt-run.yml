@@ -19,7 +19,7 @@ jobs:
       - name: dbt-run # 4. run dbt
         uses: mwhitaker/dbt-action@master  
         with:
-          dbt_command: "dbt run --profiles-dir .github/ci" # the actual dbt command!
+          dbt_command: "dbt run --profiles-dir ." # the actual dbt command!
           dbt_project_folder: "dbt"
         env:
           DBT_BIGQUERY_TOKEN: $ # credentials to access this service
