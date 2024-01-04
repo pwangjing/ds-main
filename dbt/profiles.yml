@@ -2,13 +2,13 @@ tm_core:
   outputs:
     dev:
       account: thrivemarket.us-east-1
-      database: TM_IGLOO_DEV
+      database: DEV_BASE
       role: DEV_GITHUB_ACTION_SA_ROLE
       schema: CI
       threads: 2
       type: snowflake
       user: DEV_GITHUB_ACTION_SA
-      password: "{{ env_var('SNOWFLAKE_SA_PSWD') }}" 
+      password: "kgwhs18$#BAnsdjsu" 
       warehouse: snowball
   
   target: dev
