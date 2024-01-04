@@ -3,7 +3,7 @@
     {%- set default_database = target.database -%}
     {%- set target_name = target.name -%}
     {%- if custom_database_name is not none -%}
-        {%- if custom_database_name is "TM_IGLOO" -%}
+        {%- if custom_database_name.startsWith("TM_IGLOO") -%}
             {{ custom_database_name }}_{{ target_name | upper }}
         {%- else -%}
           {{ target_name | upper }}_{{ custom_database_name }}
