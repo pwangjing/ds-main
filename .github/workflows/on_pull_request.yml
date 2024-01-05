@@ -34,7 +34,24 @@ jobs:
     steps:
       - name: checkout # 3. check out models
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        # To compare changes between the current commit and the last pushed remote commit set `since_last_remote_commit: true`. e.g
+        # with:
+        #   since_last_remote_commit: true 
+
+      - name: List all changed files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in "$ALL_CHANGED_FILES"; do
+            echo "$file was changed"
+          done
+          
       - name: Get changed files in the dbt folder
         id: changed-files-specific
         uses: tj-actions/changed-files@v41
