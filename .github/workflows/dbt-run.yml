@@ -34,8 +34,13 @@ jobs:
       - name: dbt-run # 4. run dbt
         uses: mwhitaker/dbt-action@master  
         with:
-          dbt_command: "dbt run --profiles-dir ." # the actual dbt command!
+          dbt_command: "dbt compile --profiles-dir ." # the actual dbt command!
           dbt_project_folder: "dbt"
         env:
-          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_SA_PSWD }} # credentials to access this service
-         
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_SA_PSWD }} # credentials to access this service      
+      - name: store DBT manifest file
+        uses: actions/upload-artifact@v3
+        with:
+          name: stable-dbt-manifest
+          path: |
+            dbt/*.json
