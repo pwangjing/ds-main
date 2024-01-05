@@ -77,7 +77,7 @@ jobs:
           WF_NAME="dbt-run.yml"
           ARTIFACT_NAME="stable-dbt-manifest"
           RUN_ID=`gh run list --workflow ${WF_NAME} --json databaseId --jq .[0].databaseId`
-          gh run download ${RUN_ID} -n ${ARTIFACT_NAME}
+          gh run download ${RUN_ID} -n ${ARTIFACT_NAME} -D stable_dbt_manifest
           # List the artifiact directory/files
           ls -lR
         env:
