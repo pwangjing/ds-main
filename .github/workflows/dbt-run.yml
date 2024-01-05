@@ -37,7 +37,9 @@ jobs:
           dbt_command: "dbt compile --profiles-dir ." # the actual dbt command!
           dbt_project_folder: "dbt"
         env:
-          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_SA_PSWD }} # credentials to access this service      
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_SA_PSWD }} # credentials to access this service
+          PR_NUMBER: "STG"
+          
       - name: store DBT manifest file
         uses: actions/upload-artifact@v3
         with:
