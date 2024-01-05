@@ -25,8 +25,8 @@ jobs:
             terraform:
               - 'terraform/**'
   dbt:
-    #needs: changes
-    #if: ${{ needs.changes.outputs.dbt == 'true'  }}
+    needs: changes
+    if: ${{ needs.changes.outputs.dbt == 'true'  }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout # 3. check out models
