@@ -81,7 +81,7 @@ jobs:
           # List the artifiact directory/files
           ls -lR
         env:
-          GITHUB_TOKEN: ${{ secrets.ARTIFACT_DEPLOY_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           
       - name: Display structure of downloaded files
         run: ls -R
