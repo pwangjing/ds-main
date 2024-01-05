@@ -39,9 +39,9 @@ jobs:
         id: changed-files-specific
         uses: tj-actions/changed-files@v41
         with:
-          files: dbt/models/*.{sql,yaml,yml}  # Alternatively using: `docs/**`
+          files: dbt/models/**  # Alternatively using: `docs/**`
 
-      - name: Run step if any file(s) in the docs folder change
+      - name: Run step if any file(s) in the dbt folder change
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.all_changed_files }}
