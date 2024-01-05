@@ -1,4 +1,4 @@
-name: Run dbt
+name: Run dbt on PR
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
