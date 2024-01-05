@@ -93,6 +93,7 @@ jobs:
           dbt_project_folder: "dbt"
         env:
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_SA_PSWD }} # credentials to access this service
+          PR_NUMBER: ${{ github.event.number }}
 
 
           
