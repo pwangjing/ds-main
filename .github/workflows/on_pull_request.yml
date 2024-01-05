@@ -29,6 +29,22 @@ jobs:
     steps:
       - name: checkout # 3. check out models
         uses: actions/checkout@v3
+      
+      - name: Get changed files in the dbt folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v41
+        with:
+          files: dbt/models/*.{sql,yaml,yml}  # Alternatively using: `docs/**`
+
+      - name: Run step if any file(s) in the docs folder change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files-specific.outputs.all_changed_files }}
+        run: |
+          echo "One or more files in the docs folder has changed."
+          echo "List all the files that have changed: $ALL_CHANGED_FILES"
+     
+          
       - name: dbt-run # 4. run dbt
         uses: mwhitaker/dbt-action@master  
         with:
