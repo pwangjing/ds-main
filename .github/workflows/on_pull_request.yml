@@ -11,8 +11,8 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     # Required permissions
-    permissions:
-      pull-requests: read
+    #permissions:
+    #  pull-requests: read
     outputs:
       dbt: ${{ steps.changes.outputs.dbt }}
       terraform: ${{ steps.changes.outputs.terraform }}
