@@ -67,6 +67,12 @@ jobs:
         with:
           name: stable-dbt-manifest
           path: stable_target
+          workflow: dbt-run.yml
+          branch: main
+          workflow_conclusion: success
+          check_artifacts: true
+          if_no_artifact_found: fail
+          
       - name: Display structure of downloaded files
         run: ls -R
           
