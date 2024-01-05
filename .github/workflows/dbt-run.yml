@@ -43,4 +43,4 @@ jobs:
         with:
           name: stable-dbt-manifest
           path: |
-            dbt/*.json
+            dbt/target
