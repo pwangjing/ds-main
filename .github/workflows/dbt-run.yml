@@ -2,20 +2,33 @@ name: Run dbt
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
-  # push:  # 1. run when new code is pushed
-  # schedule: # 2. also run once every day at 8am
-  #  - cron:  '0 8 * * *'
+  push: 
+    branches: 
+      - main
   workflow_dispatch:
 
 jobs:
-  action:
+  changes:
     runs-on: ubuntu-latest
-
+    outputs:
+      dbt: ${{ steps.changes.outputs.dbt }}
+      terraform: ${{ steps.changes.outputs.terraform }}
     steps:
       - name: checkout # 3. check out models
         uses: actions/checkout@v2 
-        
-
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            dbt:
+              - 'dbt/**'
+            terraform:
+              - 'terraform/**'
+  dbt:
+    needs: changes
+    if: ${{ needs.changes.outputs.dbt == 'true'  }}
+    runs-on: ubuntu-latest
+    steps:
       - name: dbt-run # 4. run dbt
         uses: mwhitaker/dbt-action@master  
         with:
