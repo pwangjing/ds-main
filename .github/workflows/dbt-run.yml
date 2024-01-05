@@ -15,7 +15,7 @@ jobs:
       terraform: ${{ steps.changes.outputs.terraform }}
     steps:
       - name: checkout # 3. check out models
-        uses: actions/checkout@v2 
+        uses: actions/checkout@v3 
       - uses: dorny/paths-filter@v2
         id: changes
         with:
@@ -29,6 +29,8 @@ jobs:
     if: ${{ needs.changes.outputs.dbt == 'true'  }}
     runs-on: ubuntu-latest
     steps:
+      - name: checkout # 3. check out models
+        uses: actions/checkout@v3
       - name: dbt-run # 4. run dbt
         uses: mwhitaker/dbt-action@master  
         with:
