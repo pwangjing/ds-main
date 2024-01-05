@@ -1,0 +1,41 @@
+name: Run dbt
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on:
+  pull_request:
+    types: [opened, reopened]
+ 
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      dbt: ${{ steps.changes.outputs.dbt }}
+      terraform: ${{ steps.changes.outputs.terraform }}
+    steps:
+      - name: checkout # 3. check out models
+        uses: actions/checkout@v3 
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            dbt:
+              - 'dbt/**'
+            terraform:
+              - 'terraform/**'
+  dbt:
+    needs: changes
+    if: ${{ needs.changes.outputs.dbt == 'true'  }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout # 3. check out models
+        uses: actions/checkout@v3
+      - name: dbt-run # 4. run dbt
+        uses: mwhitaker/dbt-action@master  
+        with:
+          dbt_command: "dbt test --profiles-dir . --target ci " # the actual dbt command!
+          dbt_project_folder: "dbt"
+        env:
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_SA_PSWD }} # credentials to access this service
+
+
+          
