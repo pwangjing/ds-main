@@ -1,1 +1,13 @@
-
+tm_core:
+  outputs:
+    dev:
+      account: thrivemarket.us-east-1
+      database: DEV_BASE
+      role: DEV_GITHUB_ACTION_SA_ROLE
+      schema: "PR_{{ env_var('PR_NUMBER') }}"
+      threads: 2
+      type: snowflake
+      user: DEV_GITHUB_ACTION_SA
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      warehouse: snowball
+  target: dev
