@@ -32,4 +32,4 @@ jobs:
         with:
           context: docker/onfleet
           tags: ${{ env.SHORT_SHA }}
-          push: false
+          push: true
