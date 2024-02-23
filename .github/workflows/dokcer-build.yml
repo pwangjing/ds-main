@@ -31,5 +31,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: docker/onfleet
-          tags: ${{ env.SHORT_SHA }}
+          tags: pwangjing/onfleet:${{ env.SHORT_SHA }}
           push: true
